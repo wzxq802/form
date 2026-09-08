@@ -87,6 +87,10 @@ $icon-size: 1.15rem;
 .field {
   margin-bottom: 1.15rem;
 
+  &--hidden {
+    display: none;
+  }
+
   &__label {
     display: block;
     margin-bottom: 0.4rem;

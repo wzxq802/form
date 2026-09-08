@@ -1,6 +1,6 @@
 /**
- * Форма заявки на курс
- * Данные скопированы из data/*.json (fetch не используем — ТЗ).
+ * Course application form
+ * Data copied from data/*.json (no fetch — per brief).
  */
 
 const courses = [
@@ -56,10 +56,10 @@ const coursePrograms = [
 const form = document.getElementById("application-form");
 const courseSelect = document.getElementById("course");
 const courseResetBtn = document.getElementById("course-reset");
+const programField = document.getElementById("field-program");
+const programSelect = document.getElementById("program");
 
-/**
- * Заполняет select курса из courses (опция «Не выбрано» уже в HTML).
- */
+/** Fill course select from `courses` ("Не выбрано" is already in HTML). */
 function fillCourses() {
   courses.forEach((course) => {
     const option = document.createElement("option");
@@ -69,23 +69,80 @@ function fillCourses() {
   });
 }
 
-/**
- * Сброс курса к «Не выбрано».
- * Полная логика с программой — в Задаче 2.
- */
+/** Program ids linked to a course via coursePrograms pairs [courseId, programId]. */
+function getProgramIdsForCourse(courseId) {
+  return coursePrograms
+    .filter(([cId]) => cId === courseId)
+    .map(([, pId]) => pId);
+}
+
+/** Rebuild program options for the selected course; clears previous options. */
+function fillProgramsForCourse(courseId) {
+  programSelect.innerHTML = "";
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Не выбрано";
+  programSelect.appendChild(placeholder);
+
+  const programIds = getProgramIdsForCourse(courseId);
+  const linkedPrograms = programs.filter((program) =>
+    programIds.includes(program.id)
+  );
+
+  linkedPrograms.forEach((program) => {
+    const option = document.createElement("option");
+    option.value = String(program.id);
+    option.textContent = program.name;
+    programSelect.appendChild(option);
+  });
+}
+
+/** Show program select and enable it. */
+function showProgramField() {
+  programField.hidden = false;
+  programField.classList.remove("field--hidden");
+  programSelect.disabled = false;
+}
+
+/** Hide program select, disable it, and clear selection/options leftover. */
+function hideProgramField() {
+  programSelect.value = "";
+  programSelect.disabled = true;
+  programSelect.innerHTML = '<option value="">Не выбрано</option>';
+  programField.hidden = true;
+  programField.classList.add("field--hidden");
+}
+
+/** Cascade: course change → show/filter programs or hide on empty. */
+function onCourseChange() {
+  const raw = courseSelect.value;
+
+  if (!raw) {
+    hideProgramField();
+    return;
+  }
+
+  const courseId = Number(raw);
+  fillProgramsForCourse(courseId);
+  showProgramField();
+}
+
+/** Reset course to "Не выбрано" (also hides program via change handler). */
 function resetCourse() {
   courseSelect.value = "";
   courseSelect.dispatchEvent(new Event("change", { bubbles: true }));
 }
 
 fillCourses();
+hideProgramField();
 
+courseSelect.addEventListener("change", onCourseChange);
 courseResetBtn.addEventListener("click", resetCourse);
 
-// Пока без отправки на сервер (Задача 3) — не даём форме перезагрузить страницу
+// No real submit yet (Task 3) — prevent page reload
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 });
 
-// --- Задача 2: каскадные списки курс → программа ---
-// --- Задача 3: валидация, fetch, модалка ---
+// --- Task 3: validation, fetch, success modal ---

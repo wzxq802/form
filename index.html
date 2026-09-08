@@ -37,7 +37,7 @@
                 method="post"
                 novalidate
               >
-                <!-- Имя -->
+                <!-- Name -->
                 <div class="field">
                   <label class="field__label" for="name">
                     Как к Вам обращаться?
@@ -81,7 +81,7 @@
                   </div>
                 </div>
 
-                <!-- Курс -->
+                <!-- Course -->
                 <div class="field" id="field-course">
                   <label class="field__label" for="course">
                     Выберите интересующий курс
@@ -108,7 +108,26 @@
                   </div>
                 </div>
 
-                <!-- Комментарии -->
+                <!-- Program (shown after a course is selected) -->
+                <div class="field field--hidden" id="field-program" hidden>
+                  <label class="field__label" for="program">
+                    Выберите программу
+                    <span class="field__required" aria-hidden="true">*</span>
+                  </label>
+                  <div class="field__control field__control--select">
+                    <select
+                      class="form-select field__select"
+                      id="program"
+                      name="program"
+                      disabled
+                      required
+                    >
+                      <option value="">Не выбрано</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Comments -->
                 <div class="field">
                   <label class="field__label" for="comment">Комментарии</label>
                   <div class="field__control">
@@ -121,7 +140,7 @@
                   </div>
                 </div>
 
-                <!-- Согласия -->
+                <!-- Consents -->
                 <fieldset class="consents">
                   <legend class="consents__title">Персональные данные</legend>
 
