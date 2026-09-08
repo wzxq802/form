@@ -49,6 +49,18 @@
 .application__submit:active {
   background-color: rgb(19.5068330362%, 36.1021984551%, 38.1402257873%);
 }
+.application__submit:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+.application__submit-spinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+.application__submit-spinner[hidden] {
+  display: none;
+}
 
 .field {
   margin-bottom: 1.15rem;
@@ -76,6 +88,40 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+.field--invalid .field__input,
+.field--invalid .field__select,
+.field--invalid .field__textarea {
+  border-color: #e74c3c;
+}
+.field--invalid .field__input:focus,
+.field--invalid .field__select:focus,
+.field--invalid .field__textarea:focus {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.15);
+}
+.field__error {
+  position: relative;
+  display: inline-block;
+  margin: 0.55rem 0 0;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.35rem;
+  background-color: #437c83;
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+.field__error[hidden] {
+  display: none;
+}
+.field__error::before {
+  content: "";
+  position: absolute;
+  top: -0.35rem;
+  left: 1rem;
+  border: 0.35rem solid transparent;
+  border-top: 0;
+  border-bottom-color: #437c83;
 }
 .field__icon {
   position: absolute;
@@ -192,6 +238,9 @@
 }
 .consents__link:hover, .consents__link:focus-visible {
   text-decoration: underline;
+}
+.consents__item--invalid .consents__checkbox {
+  border-color: #e74c3c;
 }
 
 .consents .form-check {

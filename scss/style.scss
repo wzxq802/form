@@ -80,6 +80,21 @@ $icon-size: 1.15rem;
     &:active {
       background-color: color.adjust($accent, $lightness: -10%);
     }
+
+    &:disabled {
+      opacity: 0.75;
+      cursor: not-allowed;
+    }
+  }
+
+  &__submit-spinner {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+
+    &[hidden] {
+      display: none;
+    }
   }
 }
 
@@ -116,6 +131,46 @@ $icon-size: 1.15rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+    }
+  }
+
+  &--invalid {
+    .field__input,
+    .field__select,
+    .field__textarea {
+      border-color: $error;
+
+      &:focus {
+        border-color: $error;
+        box-shadow: 0 0 0 0.2rem rgba($error, 0.15);
+      }
+    }
+  }
+
+  // Tooltip-style error (like production reference)
+  &__error {
+    position: relative;
+    display: inline-block;
+    margin: 0.55rem 0 0;
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.35rem;
+    background-color: $accent;
+    color: #fff;
+    font-size: 0.8rem;
+    line-height: 1.3;
+
+    &[hidden] {
+      display: none;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -0.35rem;
+      left: 1rem;
+      border: 0.35rem solid transparent;
+      border-top: 0;
+      border-bottom-color: $accent;
     }
   }
 
@@ -259,6 +314,12 @@ $icon-size: 1.15rem;
     &:hover,
     &:focus-visible {
       text-decoration: underline;
+    }
+  }
+
+  &__item--invalid {
+    .consents__checkbox {
+      border-color: $error;
     }
   }
 }

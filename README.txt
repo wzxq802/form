@@ -21,7 +21,3 @@ Bootstrap 5
 -----------
 CSS и JS — через CDN jsDelivr (v5.3.3). Иконки — Bootstrap Icons CDN.
 
-Статус
-------
-Задачи 1–2 — сделаны.
-Задача 3 — ещё нет.

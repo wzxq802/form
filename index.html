@@ -55,8 +55,10 @@
                       placeholder="Как к Вам обращаться?"
                       autocomplete="name"
                       required
+                      aria-describedby="name-error"
                     />
                   </div>
+                  <p class="field__error" id="name-error" role="alert" hidden></p>
                 </div>
 
                 <!-- Email -->
@@ -77,8 +79,10 @@
                       placeholder="Введите email"
                       autocomplete="email"
                       required
+                      aria-describedby="email-error"
                     />
                   </div>
+                  <p class="field__error" id="email-error" role="alert" hidden></p>
                 </div>
 
                 <!-- Course -->
@@ -93,6 +97,7 @@
                       id="course"
                       name="course"
                       required
+                      aria-describedby="course-error"
                     >
                       <option value="">Не выбрано</option>
                     </select>
@@ -106,6 +111,7 @@
                       <i class="bi bi-x" aria-hidden="true"></i>
                     </button>
                   </div>
+                  <p class="field__error" id="course-error" role="alert" hidden></p>
                 </div>
 
                 <!-- Program (shown after a course is selected) -->
@@ -121,10 +127,12 @@
                       name="program"
                       disabled
                       required
+                      aria-describedby="program-error"
                     >
                       <option value="">Не выбрано</option>
                     </select>
                   </div>
+                  <p class="field__error" id="program-error" role="alert" hidden></p>
                 </div>
 
                 <!-- Comments -->
@@ -144,13 +152,14 @@
                 <fieldset class="consents">
                   <legend class="consents__title">Персональные данные</legend>
 
-                  <div class="form-check consents__item">
+                  <div class="form-check consents__item" id="consent-personal-item">
                     <input
                       class="form-check-input consents__checkbox"
                       type="checkbox"
                       id="consent-personal"
                       name="consent-personal"
                       required
+                      aria-describedby="consent-personal-error"
                     />
                     <label class="form-check-label consents__label" for="consent-personal">
                       Я даю
@@ -159,14 +168,16 @@
                       >
                     </label>
                   </div>
+                  <p class="field__error" id="consent-personal-error" role="alert" hidden></p>
 
-                  <div class="form-check consents__item">
+                  <div class="form-check consents__item" id="consent-privacy-item">
                     <input
                       class="form-check-input consents__checkbox"
                       type="checkbox"
                       id="consent-privacy"
                       name="consent-privacy"
                       required
+                      aria-describedby="consent-privacy-error"
                     />
                     <label class="form-check-label consents__label" for="consent-privacy">
                       Я подтверждаю, что ознакомился с
@@ -175,10 +186,19 @@
                       >
                     </label>
                   </div>
+                  <p class="field__error" id="consent-privacy-error" role="alert" hidden></p>
                 </fieldset>
 
-                <button class="btn application__submit" type="submit">
-                  Отправить
+                <button class="btn application__submit" type="submit" id="submit-btn">
+                  <span class="application__submit-label">Отправить</span>
+                  <span class="application__submit-spinner" hidden>
+                    <span
+                      class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Отправка…
+                  </span>
                 </button>
               </form>
             </section>
@@ -186,6 +206,45 @@
         </div>
       </div>
     </main>
+
+    <!-- Success modal -->
+    <div
+      class="modal fade"
+      id="success-modal"
+      tabindex="-1"
+      aria-labelledby="success-modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="success-modal-title">Заявка принята</h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Закрыть"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-2">Спасибо! Мы получили вашу заявку.</p>
+            <p class="mb-1">
+              <strong>Курс:</strong>
+              <span id="success-course-name"></span>
+            </p>
+            <p class="mb-0">
+              <strong>Программа:</strong>
+              <span id="success-program-name"></span>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Закрыть
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
