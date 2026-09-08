@@ -52,6 +52,40 @@ const coursePrograms = [
   [2, 15],
 ];
 
-// --- Задача 1: вёрстка формы ---
+// --- DOM ---
+const form = document.getElementById("application-form");
+const courseSelect = document.getElementById("course");
+const courseResetBtn = document.getElementById("course-reset");
+
+/**
+ * Заполняет select курса из courses (опция «Не выбрано» уже в HTML).
+ */
+function fillCourses() {
+  courses.forEach((course) => {
+    const option = document.createElement("option");
+    option.value = String(course.id);
+    option.textContent = course.name;
+    courseSelect.appendChild(option);
+  });
+}
+
+/**
+ * Сброс курса к «Не выбрано».
+ * Полная логика с программой — в Задаче 2.
+ */
+function resetCourse() {
+  courseSelect.value = "";
+  courseSelect.dispatchEvent(new Event("change", { bubbles: true }));
+}
+
+fillCourses();
+
+courseResetBtn.addEventListener("click", resetCourse);
+
+// Пока без отправки на сервер (Задача 3) — не даём форме перезагрузить страницу
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
 // --- Задача 2: каскадные списки курс → программа ---
 // --- Задача 3: валидация, fetch, модалка ---

@@ -19,4 +19,9 @@ npx sass --watch scss/style.scss:css/style.css
 
 Bootstrap 5
 -----------
-CSS и JS — через CDN jsDelivr (v5.3.3).
+CSS и JS — через CDN jsDelivr (v5.3.3). Иконки — Bootstrap Icons CDN.
+
+Статус
+------
+Задача 1 (вёрстка) — сделана.
+Задачи 2–3 — ещё нет.

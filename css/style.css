@@ -1,49 +1,214 @@
 .page {
   min-height: 100vh;
-  padding: 2rem 0;
-  background-color: #f3f4f6;
+  padding: 2.5rem 0;
+  background-color: #eef1f4;
 }
 
 .application {
-  max-width: 36rem;
-  margin: 0 auto;
-  padding: 2rem 1.75rem;
+  padding: 2rem 1.75rem 1.75rem;
   background-color: #ffffff;
   border-radius: 0.5rem;
-  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0.35rem 1.25rem rgba(44, 62, 80, 0.1);
+}
+.application__header {
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 .application__title {
   margin: 0 0 0.35rem;
   color: #2c3e50;
   font-size: 1.5rem;
   font-weight: 700;
-  text-align: center;
+  line-height: 1.3;
 }
 .application__subtitle {
-  margin: 0 0 1.75rem;
-  color: #6c757d;
+  margin: 0;
+  color: #8a939c;
   font-size: 0.95rem;
-  text-align: center;
 }
+.application__form {
+  display: block;
+}
+.application__submit {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #437c83;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+.application__submit:hover, .application__submit:focus-visible {
+  background-color: rgb(22.2139037433%, 41.1122994652%, 43.4331550802%);
+  color: #fff;
+}
+.application__submit:active {
+  background-color: rgb(19.5068330362%, 36.1021984551%, 38.1402257873%);
+}
+
 .field {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.15rem;
 }
 .field__label {
   display: block;
   margin-bottom: 0.4rem;
   color: #2c3e50;
   font-size: 0.95rem;
+  font-weight: 500;
 }
 .field__required {
-  color: #dc3545;
+  color: #e74c3c;
 }
+.field__control {
+  position: relative;
+}
+.field__control--icon .field__input {
+  padding-left: 2.5rem;
+}
+.field__control--select {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.field__icon {
+  position: absolute;
+  top: 50%;
+  left: 0.85rem;
+  z-index: 2;
+  color: #b0b7bf;
+  font-size: 1.15rem;
+  line-height: 1;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+.field__input, .field__select, .field__textarea {
+  border: 1px solid #d0d5db;
+  border-radius: 0.5rem;
+  color: #2c3e50;
+  box-shadow: none;
+}
+.field__input::placeholder, .field__select::placeholder, .field__textarea::placeholder {
+  color: #b0b7bf;
+}
+.field__input:focus, .field__select:focus, .field__textarea:focus {
+  border-color: #86b7b9;
+  box-shadow: 0 0 0 0.2rem rgba(67, 124, 131, 0.15);
+}
+.field__input, .field__select {
+  height: 2.75rem;
+}
+.field__select {
+  flex: 1 1 auto;
+  min-width: 0;
+  cursor: pointer;
+}
+.field__textarea {
+  min-height: 6.5rem;
+  resize: vertical;
+}
+.field__reset {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.1s ease;
+}
+.field__reset:hover, .field__reset:focus-visible {
+  opacity: 0.85;
+  outline: none;
+}
+.field__reset:active {
+  transform: scale(0.95);
+}
+.field__reset .bi {
+  line-height: 1;
+}
+
+.consents {
+  margin: 0 0 1.35rem;
+  padding: 0;
+  border: none;
+}
+.consents__title {
+  margin-bottom: 0.75rem;
+  padding: 0;
+  color: #8a939c;
+  font-size: 0.9rem;
+  float: none;
+}
+.consents__item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.65rem;
+  min-height: auto;
+  padding-left: 0;
+}
+.consents__item:last-child {
+  margin-bottom: 0;
+}
+.consents__checkbox {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.15rem;
+  margin-left: 0;
+  border-color: #d0d5db;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+.consents__checkbox:checked {
+  background-color: #437c83;
+  border-color: #437c83;
+}
+.consents__checkbox:focus {
+  box-shadow: 0 0 0 0.2rem rgba(67, 124, 131, 0.2);
+}
+.consents__label {
+  margin-left: 0.55rem;
+  color: #2c3e50;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.consents__link {
+  color: #4a9eff;
+  text-decoration: none;
+}
+.consents__link:hover, .consents__link:focus-visible {
+  text-decoration: underline;
+}
+
+.consents .form-check {
+  padding-left: 0;
+}
+
+.consents .form-check-input {
+  float: none;
+  margin-left: 0;
+}
+
 @media (max-width: 575.98px) {
   .page {
     padding: 1rem 0;
   }
   .application {
-    padding: 1.5rem 1.25rem;
-    border-radius: calc(0.5rem + 0.125rem);
+    padding: 1.5rem 1.15rem 1.35rem;
+  }
+  .application__title {
+    font-size: 1.3rem;
   }
 }
 
