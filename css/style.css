@@ -1,0 +1,50 @@
+.page {
+  min-height: 100vh;
+  padding: 2rem 0;
+  background-color: #f3f4f6;
+}
+
+.application {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 2rem 1.75rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
+}
+.application__title {
+  margin: 0 0 0.35rem;
+  color: #2c3e50;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+.application__subtitle {
+  margin: 0 0 1.75rem;
+  color: #6c757d;
+  font-size: 0.95rem;
+  text-align: center;
+}
+.field {
+  margin-bottom: 1.25rem;
+}
+.field__label {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+.field__required {
+  color: #dc3545;
+}
+@media (max-width: 575.98px) {
+  .page {
+    padding: 1rem 0;
+  }
+  .application {
+    padding: 1.5rem 1.25rem;
+    border-radius: calc(0.5rem + 0.125rem);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

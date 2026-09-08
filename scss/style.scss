@@ -1,0 +1,89 @@
+// =============================================================================
+// Application form — BEM styles
+// Bootstrap 5 подключён через CDN; здесь только кастомные стили формы.
+// Компиляция: npx sass scss/style.scss css/style.css
+// =============================================================================
+
+// --- Variables ---
+$page-bg: #f3f4f6;
+$card-bg: #ffffff;
+$text-primary: #2c3e50;
+$text-muted: #6c757d;
+$accent: #437c83;
+$border: #ced4da;
+$error: #dc3545;
+$link: #0d6efd;
+$radius: 0.5rem;
+$shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.08);
+
+// --- Page ---
+.page {
+  min-height: 100vh;
+  padding: 2rem 0;
+  background-color: $page-bg;
+}
+
+// --- Application card ---
+.application {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 2rem 1.75rem;
+  background-color: $card-bg;
+  border-radius: $radius;
+  box-shadow: $shadow;
+
+  &__title {
+    margin: 0 0 0.35rem;
+    color: $text-primary;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &__subtitle {
+    margin: 0 0 1.75rem;
+    color: $text-muted;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  &__form {
+    // поля — Задача 1
+  }
+}
+
+// --- Form field (заготовка под БЭМ-блоки полей) ---
+.field {
+  margin-bottom: 1.25rem;
+
+  &__label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: $text-primary;
+    font-size: 0.95rem;
+  }
+
+  &__required {
+    color: $error;
+  }
+
+  &__control {
+    // инпуты / select / textarea — Задача 1
+  }
+
+  &__error {
+    // текст ошибки / тултип — Задача 3
+  }
+}
+
+// --- Mobile ---
+@media (max-width: 575.98px) {
+  .page {
+    padding: 1rem 0;
+  }
+
+  .application {
+    padding: 1.5rem 1.25rem;
+    border-radius: calc(#{$radius} + 0.125rem);
+  }
+}
